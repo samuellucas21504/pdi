@@ -17,9 +17,20 @@
     color: var(--bg-color);
     font-weight: 600;
     margin-top: auto;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
 }
 
 .submit-button:hover {
     background-color: var(--color);
     transition: all 300ms;
+}
+
+.submit-button:disabled {
+    color: var(--color);
+}
+
+.submit-button:disabled:hover {
+    background-color: var(--surface-color);
 }

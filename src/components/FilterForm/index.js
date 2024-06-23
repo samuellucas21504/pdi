@@ -2,8 +2,9 @@ import FilterInput from '../FilterInput';
 import './styles.css';
 import { useState } from "react";
 import { filters } from '../../assets/filters';
+import Spinner from '../Spinner';
 
-function FilterForm({ className, handleSubmit }) {
+function FilterForm({ className, handleSubmit, isLoading }) {
     const [selectedFilters, setSelectedFilters] = useState([]);
 
     const handleSelectFilter = (key) => {
@@ -29,8 +30,8 @@ function FilterForm({ className, handleSubmit }) {
                 />
                 )
             }
-            <button onClick={() => handleSubmit(selectedFilters)} className='submit-button'>
-                Enviar
+            <button onClick={() => handleSubmit(selectedFilters)} className='submit-button' disabled={!isLoading}>
+                { !isLoading ?  <Spinner/> : 'Enviar'} 
             </button>
         </div>
     );

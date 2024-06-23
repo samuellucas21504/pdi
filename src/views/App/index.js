@@ -6,6 +6,8 @@ import { useState } from 'react';
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = (filters) => {
     const postObj = {
       filters: {
@@ -28,6 +30,7 @@ function App() {
         <FilterForm 
           className='col-span-2'
           handleSubmit={handleSubmit}
+          isLoading
         />
       </div>
     </div>

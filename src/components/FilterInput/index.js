@@ -1,5 +1,4 @@
 import './styles.css';
-import { useState } from "react";
 
 function FilterInput({ className, name, handleSelectFilter }) {
     return (
