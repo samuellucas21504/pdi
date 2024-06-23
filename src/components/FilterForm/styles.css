@@ -1,0 +1,25 @@
+.Form {
+    border: 2px solid var(--surface-color);
+    display: flex;
+    flex-direction: column;
+    border-left: 0;
+    border-radius: 0 20px 20px 0;
+    overflow: scroll;
+}
+
+.Form::-webkit-scrollbar{
+    display: none;
+}
+
+.submit-button {
+    background-color: var(--surface-color);
+    border-radius: 5px;
+    color: var(--bg-color);
+    font-weight: 600;
+    margin-top: auto;
+}
+
+.submit-button:hover {
+    background-color: var(--color);
+    transition: all 300ms;
+}
