@@ -4,27 +4,35 @@ export const filters = [
         key: "limiarizacao",
     },
     {
-        name: "Inversão de cores",
+        name: "Inverter cores",
         key: "inversao",
     },
     {
-        name: "Escala de cinza",
+        name: "Conversão para cinza",
         key: "cinza",
     },
     {
-        name: "Redimensionamento",
-        key: "redimensionamento",
+        name: "Detecção de bordas Canny",
+        key: "canny",
     },
     {
-        name: "Detecção de bordas",
-        key: "bordas",
+        name: "Remoção de ruídos Gaussiano",
+        key: "gaussiano",
     },
     {
-        name: "Manipulação de filtros",
-        key: "filtros",
+        name: "Remoção de ruídos Mediana",
+        key: "mediana",
     },
     {
-        name: "Remoção de ruídos",
-        key: "ruidos"
+        name: "Remoção de ruídos Bilateral",
+        key: "bilateral",
+    },
+    {
+        name: "Filtro Sépia",
+        key: "sepia",
+    },
+    {
+        name: "Filtro de Suavização",
+        key: "suavizacao",
     },
 ];

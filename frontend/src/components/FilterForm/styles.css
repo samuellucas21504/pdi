@@ -5,6 +5,9 @@
     border-left: 0;
     border-radius: 0 20px 20px 0;
     overflow: scroll;
+    min-height: 250px;
+    max-height: 600px;
+
 }
 
 .Form::-webkit-scrollbar{
@@ -33,4 +36,25 @@
 
 .submit-button:disabled:hover {
     background-color: var(--surface-color);
+}
+
+.resize-inputs input {
+    min-width: 90px;
+    height: 24px;
+}
+
+.resize-inputs input::-webkit-outer-spin-button,
+.resize-inputs  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media screen and (width < 900px) {
+    .Form {
+        border: 2px solid var(--surface-color);
+        border-top: 0;
+        border-radius: 0 0 20px 20px;
+        overflow: scroll;
+        min-height: 350px;
+    }
 }
