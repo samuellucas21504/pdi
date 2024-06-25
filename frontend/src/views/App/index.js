@@ -1,5 +1,5 @@
-import ImageInput from '../../components/ImageInput';
-import FilterForm from '../../components/FilterForm';
+import ImageInput from './ImageInput';
+import FilterForm from './FilterForm';
 import useUpload from '../../hooks/useUpload';
 import './styles.css';
 

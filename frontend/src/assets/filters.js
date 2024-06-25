@@ -51,7 +51,7 @@ export const filters = {
             key: "suavizacao",
         },
     ],
-    operações_mofológicas: [
+    operações_morfológicas: [
         {
             name: "Erosão",
             key: "erosao",

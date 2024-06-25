@@ -1,8 +1,8 @@
 import FilterInput from '../FilterInput';
 import './styles.css';
 import { useState } from "react";
-import { filters } from '../../assets/filters';
-import Spinner from '../Spinner';
+import { filters } from '../../../assets/filters';
+import Spinner from '../../../components/Spinner';
 import Dropdown from '../DropDown';
 
 function FilterForm({ className, handleUpload, isLoading, setSelectedFilters }) {
