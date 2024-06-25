@@ -7,6 +7,8 @@
   --color: #36454F;
   --surface-color: #ccccb6;
   accent-color: var(--color);
+  
+  --md: 768px;
 }
 
 body {

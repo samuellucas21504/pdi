@@ -7,6 +7,8 @@
     box-shadow: 2px 2px 5px var(--surface-color);
     min-height: fit-content;
     max-height: 140px;
+    padding: 8px;
+    scroll-behavior: smooth;
 }
 
 .form-input input {
@@ -14,6 +16,16 @@
     height: 18px;
     justify-self: center;
     cursor: pointer;
+}
+
+.form-input input[type="number"] {
+    border: 1px solid var(--surface-color);
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.form-input input:hover {
+    accent-color: red;
 }
 
 .form-input label {
@@ -25,20 +37,11 @@
     background-color: var(--color);
     height: 26px;
     width: 26px;
-    align-content: center;
-    justify-items: center;
-    justify-self: center;
     border-radius: 3px;
     cursor: pointer;
     text-align: center;
     font-size: 18px;
     font-weight: 600;
-}
-
-@media screen and (width < 900px) {
-    .form-input {
-
-    }
-    
-    
+    padding: auto;
+    margin: auto;
 }

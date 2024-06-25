@@ -7,11 +7,11 @@
     overflow: scroll;
     min-height: 250px;
     max-height: 600px;
-
+    position: relative;
 }
 
 .Form::-webkit-scrollbar{
-    display: none;
+   display: none;
 }
 
 .submit-button {
@@ -19,15 +19,17 @@
     border-radius: 5px;
     color: var(--bg-color);
     font-weight: 600;
-    margin-top: auto;
-    min-height: 36px;
+    margin-top: 25px;
+    min-height: 48px;
     align-items: center;
     justify-content: center;
+    transition: all 300ms;
+    position: sticky;
+    bottom: 0;
 }
 
 .submit-button:hover {
     background-color: var(--color);
-    transition: all 300ms;
 }
 
 .submit-button:disabled {
@@ -49,7 +51,7 @@
   margin: 0;
 }
 
-@media screen and (width < 900px) {
+@media screen and (width < 768px) {
     .Form {
         border: 2px solid var(--surface-color);
         border-top: 0;

@@ -9,11 +9,12 @@ function App() {
     isLoading,
     handleImageChange,
     handleUpload,
+    setSelectedFilters,
   } = useUpload();
 
   return (
     <div className="App">
-      <div className='Main grid md:grid-cols-5 grid-cols-1 p-12 h-screen'>
+      <div className='Main grid md:grid-cols-5 grid-cols-1 h-screen'>
         <ImageInput 
           className='md:col-span-3' 
           handleImageChange={handleImageChange}
@@ -23,6 +24,7 @@ function App() {
           className='md:col-span-2'
           isLoading={isLoading}
           handleUpload={handleUpload}
+          setSelectedFilters={setSelectedFilters}
         />
       </div>
     </div>

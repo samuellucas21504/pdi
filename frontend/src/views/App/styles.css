@@ -1,9 +1,18 @@
 .App {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: auto;
+  min-height: 100vh;
 }
 
 .Main {
   justify-content: center;
+  justify-self: center;
+  align-self: center;
+  padding: 5%;
   font-size: calc(10px + 2vmin);
-  min-height: 600px;
+  max-height: 850px;
+  width: 90%;
 }

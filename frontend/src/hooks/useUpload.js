@@ -4,6 +4,7 @@ import axios from 'axios';
 const useUpload = () => {
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFilters, setSelectedFilters] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -22,7 +23,7 @@ const useUpload = () => {
     }
   };
 
-  const handleUpload = async (filters) => {
+  const handleUpload = async () => {
     if (!selectedFile) {
       alert('Por favor selecione uma imagem antes!');
       return;
@@ -33,35 +34,41 @@ const useUpload = () => {
 
     const reader = new FileReader();
     reader.onloadend = async () => {
-      const base64String = reader.result.split(',')[1]; // Extract base64 string without metadata
+      const base64String = reader.result.split(',')[1];
       const data = {
         filename: selectedFile.name,
         content: base64String,
-        filters: {...filters},
+        filters: {...selectedFilters},
       };
       console.log(data);
 
       try {
-        const response = await axios.post('http://localhost:8000/', data, {
+        await axios.post('http://localhost:8000/', data, {
           headers: {
             'Content-Type': 'application/json',
             responseType: 'blob',
           },
-        });
-
-        if (response.status === 200) {
+        }).then((response => {
+          if (response.status === 200) {
             setImagePreviewUrl(`data:image/png;base64,${response.data.content}`);
-        } else {
-          setError('Image upload failed');
-        }
+          } else {
+            setError('Image upload failed');
+          }
+        }));
+
+        
       } catch (err) {
         console.error('Error uploading image:', err);
         setError('An error occurred while uploading the image');
       } finally {
         setIsLoading(false);
       }
+
+      return;
     };
+
     reader.readAsDataURL(selectedFile);
+    return;
   };
 
   return {
@@ -70,6 +77,7 @@ const useUpload = () => {
     error,
     handleImageChange,
     handleUpload,
+    setSelectedFilters
   };
 };
 

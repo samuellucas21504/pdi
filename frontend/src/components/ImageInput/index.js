@@ -7,7 +7,6 @@ function ImageInput({ className, selectedFile, handleImageChange }) {
     const handleOnChange = (event) => {
         if(event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
-            
             handleImageChange(file);
         }
     }
@@ -29,13 +28,11 @@ function ImageInput({ className, selectedFile, handleImageChange }) {
     
     if(selectedFile != null) {
         return <div className={`${className} image-section`}>
-            <div className='absolute md:top-20 md:left-20 top-16 left-16 download-button md:p-2 p-1'>
-                <button onClick={handleDownload}>
+            <div className='absolute md:top-4 md:left-4 top-2 left-2 flex md:flex-col md:space-y-4 md:space-x-0 space-x-2'>
+                <button onClick={handleDownload} className='download-button md:p-2 p-1 m-auto'>
                     Baixar Imagem
                 </button>
-            </div>
-            <div className='absolute md:top-40 md:left-20 top-28 left-16 close-button md:p-2 p-1'>
-                <button onClick={() => handleImageChange(null)} >
+                <button onClick={() => handleImageChange(null)} className='close-button md:p-2 p-1 m-auto' >
                     Remover
                 </button>
             </div>
