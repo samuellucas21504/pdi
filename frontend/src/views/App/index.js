@@ -1,7 +1,9 @@
 import ImageInput from './ImageInput';
 import FilterForm from './FilterForm';
 import useUpload from '../../hooks/useUpload';
+import useModal from '../../hooks/useModal.tsx';
 import './styles.css';
+import Modal from '../../components/Modal';
 
 function App() {
   const {
@@ -11,6 +13,13 @@ function App() {
     handleUpload,
     setSelectedFilters,
   } = useUpload();
+
+  const {
+    isOpen,
+    toggleModal,
+    children,
+    setChildren
+  } = useModal();
 
   return (
     <div className="App">
@@ -25,7 +34,12 @@ function App() {
           isLoading={isLoading}
           handleUpload={handleUpload}
           setSelectedFilters={setSelectedFilters}
+          toggleModal={toggleModal}
+          setChildren={setChildren}
         />
+        <Modal isOpen={isOpen} handleClose={toggleModal}>
+          {children}
+        </Modal>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dtos.ImageDTO import ImageDTO
 import base64
@@ -7,6 +7,7 @@ from io import BytesIO
 from PIL import Image
 import numpy as np
 import cv2
+from services.ImageService import ImageService
 
 app = FastAPI()
 
@@ -27,47 +28,48 @@ app.add_middleware(
 
 @app.post("/")
 async def root(image_data: ImageDTO):
+    print(image_data.filters)
     try:
         image_bytes = base64.b64decode(image_data.content)
-        image = Image.open(BytesIO(image_bytes))
+        image = Image.open(BytesIO(image_bytes)).convert('RGB')
 
         open_cv_image = np.array(image)
-        if open_cv_image.shape[2] == 4:
+
+        if len(open_cv_image.shape) == 3 and open_cv_image.shape[2] == 4:
             open_cv_image = open_cv_image[:, :, :3]
+
         if image_data.filters:
             if image_data.filters.cinza:
-                open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
+                open_cv_image = ImageService.convert_to_gray(open_cv_image)
             if image_data.filters.limiarizacao:
-                if len(open_cv_image.shape) == 3:
-                    open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
-                _, open_cv_image = cv2.threshold(open_cv_image, 127, 255, cv2.THRESH_BINARY)
+                open_cv_image = ImageService.limiar(open_cv_image)
             if image_data.filters.canny:
-                gray = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY) if len(
-                    open_cv_image.shape) == 3 else open_cv_image
-                edges = cv2.Canny(gray, 100, 200)
-                open_cv_image = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
+                open_cv_image = ImageService.canny(open_cv_image)
+            if image_data.filters.sobel:
+                open_cv_image = ImageService.sobel(open_cv_image)
+            if image_data.filters.prewitt:
+                open_cv_image = ImageService.prewitt(open_cv_image)
+            if image_data.filters.laplacian:
+                open_cv_image = ImageService.laplacian(open_cv_image)
             if image_data.filters.inversao:
-                open_cv_image = cv2.bitwise_not(open_cv_image)
+                open_cv_image = ImageService.invert_colors(open_cv_image)
             if image_data.filters.mediana:
-                open_cv_image = cv2.medianBlur(open_cv_image, 5)
+                open_cv_image = ImageService.median_blur(open_cv_image)
             if image_data.filters.gaussiano:
-                open_cv_image = cv2.GaussianBlur(open_cv_image, (5, 5), 0)
+                open_cv_image = ImageService.gaussian_blur(open_cv_image)
             if image_data.filters.bilateral:
-                open_cv_image = cv2.bilateralFilter(open_cv_image, 9, 75, 75)
+                open_cv_image = ImageService.bilateral_filter(open_cv_image)
             if image_data.filters.sepia:
-                kernel = np.array([[0.272, 0.534, 0.131],
-                                   [0.349, 0.686, 0.168],
-                                   [0.393, 0.769, 0.189]])
-                open_cv_image = cv2.transform(open_cv_image, kernel)
+                open_cv_image = ImageService.sepia_filter(open_cv_image)
             if image_data.filters.suavizacao:
-                open_cv_image = cv2.blur(open_cv_image, (5, 5))
+                open_cv_image = ImageService.blur(image)
             if image_data.filters.redimensionamento:
                 width, height = image_data.filters.redimensionamento
-                if width[1] > 5000:
-                    width[1] = 5000
-                if height[1] > 5000:
-                    height[1] = 5000
-                open_cv_image = cv2.resize(open_cv_image, (int(width[1]), int(height[1])))
+                open_cv_image = ImageService.resize(image, width[1], height[1])
+            if image_data.filters.erosao:
+                open_cv_image = ImageService.erode(open_cv_image)
+            if image_data.filters.dilatacao:
+                open_cv_image = ImageService.dilate(open_cv_image)
         processed_image = Image.fromarray(open_cv_image)
 
         buffered = BytesIO()

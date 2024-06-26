@@ -14,41 +14,15 @@
    display: none;
 }
 
-.submit-button {
-    background-color: var(--surface-color);
-    border-radius: 5px;
-    color: var(--bg-color);
-    font-weight: 600;
-    margin-top: 25px;
-    min-height: 48px;
-    align-items: center;
-    justify-content: center;
-    transition: all 300ms;
-    position: sticky;
-    bottom: 0;
-}
-
-.submit-button:hover {
-    background-color: var(--color);
-}
-
-.submit-button:disabled {
-    color: var(--color);
-}
-
-.submit-button:disabled:hover {
-    background-color: var(--surface-color);
-}
-
-.resize-inputs input {
-    min-width: 90px;
-    height: 24px;
-}
-
 .resize-inputs input::-webkit-outer-spin-button,
 .resize-inputs  input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.resize-inputs input {
+    min-width: 100px;
+    height: 30px;
 }
 
 @media screen and (width < 768px) {

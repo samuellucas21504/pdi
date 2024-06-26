@@ -7,6 +7,7 @@
   --color: #36454F;
   --surface-color: #ccccb6;
   accent-color: var(--color);
+  --error-color: #a30000;
   
   --md: 768px;
 }

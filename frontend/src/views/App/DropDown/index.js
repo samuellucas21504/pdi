@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { StringUtils } from '../../../utils/StringUtils.js';
+import { useState, useRef } from 'react';
+import { StringUtils } from '../../../utils/StringUtils.ts'
 import './styles.css';
 
 export const Dropdown = ({ title, children }) => {

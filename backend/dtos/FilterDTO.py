@@ -9,9 +9,14 @@ class FilterDTO(BaseModel):
     cinza: Optional[bool] = None
     redimensionamento: Optional[SizeDTO] = None
     canny: Optional[bool] = None
+    prewitt: Optional[bool] = None
+    sobel: Optional[bool] = None
+    laplacian: Optional[bool] = None
     gaussiano: Optional[bool] = None
     mediana: Optional[bool] = None
     bilateral: Optional[bool] = None
     ruidos: Optional[bool] = None
     sepia: Optional[bool] = None
     suavizacao: Optional[bool] = None
+    erosao: Optional[bool] = None
+    dilatacao: Optional[bool] = None

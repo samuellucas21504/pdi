@@ -19,7 +19,7 @@ function ImageInput({ className, selectedFile, handleImageChange }) {
         if (selectedFile) {
           const link = document.createElement('a');
           link.href = selectedFile;
-          link.download = 'imagem_processada.png'; // You can change the file name here
+          link.download = 'imagem_processada.png'; 
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

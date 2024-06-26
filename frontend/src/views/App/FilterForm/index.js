@@ -2,10 +2,17 @@ import FilterInput from '../FilterInput';
 import './styles.css';
 import { useState } from "react";
 import { filters } from '../../../assets/filters';
-import Spinner from '../../../components/Spinner';
 import Dropdown from '../DropDown';
+import Button from '../../../components/Button';
 
-function FilterForm({ className, handleUpload, isLoading, setSelectedFilters }) {
+function FilterForm({ 
+    className,
+    handleUpload,
+    isLoading,
+    setSelectedFilters,
+    setChildren,
+    toggleModal
+ }) {
     const [, setSize] = useState({width: 0, height: 0});
 
     const handleWidthChange = (e) => {
@@ -52,19 +59,22 @@ function FilterForm({ className, handleUpload, isLoading, setSelectedFilters }) 
     function generateFormList(node) {
         return Object.keys(node).map((key) => {
             const child = node[key];
+            const _k = child.key ?? key;
+
             if (Array.isArray(child)) {
                 return (
-                    <Dropdown title={key}>
+                    <Dropdown key={_k} title={key}>
                         {generateFormList(child)}
                     </Dropdown>
                 );
             } else {
-                const _k = child.key ?? key;
                 return (    
                     <FilterInput
                         key={_k}
                         name={child.name}
                         handleSelectFilter={() => handleSelectFilter(_k)}
+                        setChildren={setChildren}
+                        toggleModal={toggleModal}
                     />
                 );
             }
@@ -96,12 +106,12 @@ function FilterForm({ className, handleUpload, isLoading, setSelectedFilters }) 
                             />
                         </div>
                     </div>
-                <div className='col-span-2 about-button'>?</div>
                 </div>
             </div>
-            <button onClick={() => handleUpload()} className='submit-button' disabled={isLoading}>
-                { isLoading ?  <Spinner/> : 'Enviar'} 
-            </button>
+            <Button onClick={() => handleUpload()} disabled={isLoading}>
+                Enviar
+            </Button>
+            
         </div>
     );
 }
