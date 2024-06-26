@@ -1,7 +1,7 @@
 import ImageInput from './ImageInput';
 import FilterForm from './FilterForm';
 import useUpload from '../../hooks/useUpload';
-import useModal from '../../hooks/useModal.tsx';
+import useModal from '../../hooks/useModal';
 import './styles.css';
 import Modal from '../../components/Modal';
 
