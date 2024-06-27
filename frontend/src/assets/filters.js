@@ -23,7 +23,7 @@ export const filters = {
             key: "sobel",
         },
         {
-            name: "Laplaciano",
+            name: "Laplaciano Gaussiano",
             key: "laplacian",
         }
     ],

@@ -27,17 +27,21 @@ function ImageInput({ className, selectedFile, handleImageChange }) {
       };
     
     if(selectedFile != null) {
-        return <div className={`${className} image-section`}>
-            <div className='absolute md:top-4 md:left-4 top-2 left-2 flex md:flex-col md:space-y-4 md:space-x-0 space-x-2'>
-                <button onClick={handleDownload} className='download-button md:p-2 p-1 m-auto'>
-                    Baixar Imagem
-                </button>
-                <button onClick={() => handleImageChange(null)} className='close-button md:p-2 p-1 m-auto' >
-                    Remover
-                </button>
+
+        return  <div className={`${className}`}>
+            <div className='image-section'>
+                <div className='absolute md:top-4 md:left-4 top-2 left-2 flex md:flex-col md:space-y-4 md:space-x-0 space-x-2'>
+                    <button onClick={handleDownload} className='download-button md:p-2 p-1 m-auto'>
+                        Baixar Imagem
+                    </button>
+                    <button onClick={() => handleImageChange(null)} className='close-button md:p-2 p-1 m-auto' >
+                        Remover
+                    </button>
+                </div>
+                <img src={selectedFile} alt='Sua Imagem' />
             </div>
-            <img src={selectedFile} alt='Sua Imagem' />
         </div>
+
     }
 
     return (
@@ -47,7 +51,7 @@ function ImageInput({ className, selectedFile, handleImageChange }) {
                 ref={inputRef} 
                 onChange={handleOnChange} 
                 className="hidden" 
-                accept="image/png, image/jpeg"/>
+                accept="image/png"/>
             
             <button className="file-btn" onClick={onChooseFile}>
                 Adicionar Imagem

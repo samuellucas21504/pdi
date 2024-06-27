@@ -4,6 +4,7 @@ import useUpload from '../../hooks/useUpload';
 import useModal from '../../hooks/useModal';
 import './styles.css';
 import Modal from '../../components/Modal';
+import { Footer } from './Footer';
 
 function App() {
   const {
@@ -23,24 +24,25 @@ function App() {
 
   return (
     <div className="App">
-      <div className='Main grid md:grid-cols-5 grid-cols-1 h-screen'>
+      <div className='Main grid lg:grid-cols-4 grid-cols-1 h-screen'>
         <ImageInput 
-          className='md:col-span-3' 
+          className='lg:col-span-3 col-span-0' 
           handleImageChange={handleImageChange}
           selectedFile={imagePreviewUrl} 
         />
         <FilterForm 
-          className='md:col-span-2'
           isLoading={isLoading}
           handleUpload={handleUpload}
           setSelectedFilters={setSelectedFilters}
           toggleModal={toggleModal}
           setChildren={setChildren}
         />
-        <Modal isOpen={isOpen} handleClose={toggleModal}>
+      </div>
+      <Modal isOpen={isOpen} handleClose={toggleModal}>
           {children}
         </Modal>
-      </div>
+      <Footer />
+
     </div>
   );
 }

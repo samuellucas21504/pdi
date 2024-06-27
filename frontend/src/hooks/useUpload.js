@@ -40,7 +40,6 @@ const useUpload = () => {
         content: base64String,
         filters: {...selectedFilters},
       };
-      console.log(data);
 
       try {
         await axios.post('http://localhost:8000/', data, {
@@ -53,12 +52,13 @@ const useUpload = () => {
             setImagePreviewUrl(`data:image/png;base64,${response.data.content}`);
           } else {
             setError('Image upload failed');
+            alert('Aconteceu um erro durante o upload da imagem! Tente novamente.');
           }
         }));
 
         
       } catch (err) {
-        console.error('Error uploading image:', err);
+        alert('Ocorreu um erro durante o upload da imagem! Tente novamente.');
         setError('An error occurred while uploading the image');
       } finally {
         setIsLoading(false);

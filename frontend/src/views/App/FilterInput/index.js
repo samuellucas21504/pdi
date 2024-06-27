@@ -7,14 +7,14 @@ function FilterInput({
     setChildren,
     toggleModal,
  }) {
-    const ModalContent = () => {
-        return 'a';
-    }
+    // const ModalContent = () => {
+    //     return 'a';
+    // }
 
-    const openModal = () => {
-        setChildren(<ModalContent />);
-        toggleModal();
-    }
+    // const openModal = () => {
+    //     setChildren(<ModalContent />);
+    //     toggleModal();
+    // }
 
     return (
         <div className={`grid md:grid-cols-5 grid-cols-7 form-input ${className ?? ''}`}>
@@ -25,11 +25,11 @@ function FilterInput({
                 onChange={handleSelectFilter}
             />
             <label className='md:col-span-3 col-span-5' htmlFor={name}>{name}</label>
-            <button 
+            {/* <button 
                 type='button' 
                 onClick={() => openModal()}
                 className='about-button'
-                >?</button>
+                >?</button> */}
         </div>
     );
 }

@@ -6,7 +6,7 @@ import Dropdown from '../DropDown';
 import Button from '../../../components/Button';
 
 function FilterForm({ 
-    className,
+    className = '',
     handleUpload,
     isLoading,
     setSelectedFilters,

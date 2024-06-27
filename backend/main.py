@@ -62,7 +62,7 @@ async def root(image_data: ImageDTO):
             if image_data.filters.sepia:
                 open_cv_image = ImageService.sepia_filter(open_cv_image)
             if image_data.filters.suavizacao:
-                open_cv_image = ImageService.blur(image)
+                open_cv_image = ImageService.blur(open_cv_image)
             if image_data.filters.redimensionamento:
                 width, height = image_data.filters.redimensionamento
                 open_cv_image = ImageService.resize(image, width[1], height[1])

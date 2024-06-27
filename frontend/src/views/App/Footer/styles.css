@@ -1,0 +1,14 @@
+.footer {
+    margin: 10px;
+}
+
+.footer span {
+    font-weight: bold;
+}
+
+@media screen and (width < 1024px) {
+    .footer {
+        margin: auto 5vw;
+        text-align: center;
+    }
+}

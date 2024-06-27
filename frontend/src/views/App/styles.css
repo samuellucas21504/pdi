@@ -1,18 +1,26 @@
 .App {
   display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
-  padding: auto;
   min-height: 100vh;
+  align-content: center;
 }
 
 .Main {
-  justify-content: center;
-  justify-self: center;
+  margin: 0 auto;
   align-self: center;
-  padding: 5%;
+  align-items: center;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   max-height: 850px;
   width: 90%;
+}
+
+@media screen and (width < 1024px) {
+  .Main{
+    height: 90vh;
+    padding: 5vh 0;
+  }
 }

@@ -21,16 +21,18 @@
 }
 
 .resize-inputs input {
-    min-width: 100px;
+    width: 65px;
     height: 30px;
 }
 
-@media screen and (width < 768px) {
+@media screen and (width < 1024px) {
     .Form {
         border: 2px solid var(--surface-color);
         border-top: 0;
         border-radius: 0 0 20px 20px;
         overflow: scroll;
         min-height: 350px;
+        z-index: 2;
+        height: 50vh;
     }
 }
